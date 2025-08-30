@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome to DocNowLk</title>
+
+  <!-- Font Awesome (for mini icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    #bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .content {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff, 0 0 30px #00f0ff;
+      animation: glow 2s infinite alternate;
+    }
+
+    p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+      color: #d9faff;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 10px;
+      padding: 12px 28px;
+      font-size: 16px;
+      border: none;
+      border-radius: 50px;
+      background-color: #00f0ff;
+      color: #000;
+      text-decoration: none;
+      transition: 0.3s;
+      box-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
+      cursor: pointer;
+    }
+
+    .btn i {
+      font-size: 0.95em; /* mini icon size */
+      line-height: 0;
+    }
+
+    .btn:hover {
+      background-color: #ffffff;
+      color: #007BFF;
+      box-shadow: 0 0 20px #00f0ff, 0 0 40px #00f0ff;
+    }
+
+    .about-btn {
+      background-color: rgba(0, 240, 255, 0.3);
+      color: white;
+      border: 1px solid #00f0ff;
+    }
+
+    .about-btn:hover {
+      background-color: rgba(0, 240, 255, 0.5);
+      color: white;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .modal-content {
+      background-color: rgba(0, 0, 0, 0.8);
+      margin: 10% auto;
+      padding: 30px;
+      border: 1px solid #00f0ff;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 700px;
+      box-shadow: 0 0 20px #00f0ff;
+      color: white;
+      animation: modalopen 0.5s;
+    }
+
+    @keyframes modalopen {
+      from {opacity: 0; transform: translateY(-50px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    .close {
+      color: #00f0ff;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: white;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 5px #00f0ff, 0 0 10px hsl(184, 100%, 50%);
+      }
+      to {
+        text-shadow: 0 0 15px #00f0ff, 0 0 30px #00f0ff;
+      }
+    }
+  </style>
+</head>
+<body>
+  <video autoplay muted loop playsinline id="bg-video">
+    <source src="index.mp4" type="video/mp4" />
+  </video>
+
+  <div class="content">
+    <h1>Welcome to DocNowLk</h1>
+    <p>Meet Doctors Online & Book Your Appointment Easily</p>
+
+    <div style="margin: 20px 0;">
+      <!-- Removed the old single Login button -->
+      <a href="login.html".html" class="btn">
+        <i class="fa-solid fa-user"></i>
+        Login
+      </a>
+      <a href="signup.html" class="btn">
+        <i class="fa-solid fa-user-plus"></i>
+        Sign Up Patient
+      </a>
+
+      <button class="btn about-btn" id="aboutBtn">
+        <i class="fa-solid fa-circle-info"></i>
+        About Us
+      </button>
+    </div>
+  </div>
+
+  <!-- About Modal -->
+  <div id="aboutModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 style="text-align: center; margin-bottom: 20px; text-shadow: 0 0 5px #00f0ff;">About DocNowLk</h2>
+      <p style="line-height: 1.6; margin-bottom: 15px;">
+        <strong>DocNowLk</strong> is Sri Lanka's leading online hospital channeling platform that connects patients with healthcare professionals through a seamless digital experience.
+      </p>
+
+      <h3 style="color: #00f0ff; margin: 20px 0 10px;">Our Mission</h3>
+      <p style="line-height: 1.6; margin-bottom: 15px;">
+        To revolutionize healthcare access in Sri Lanka by providing a convenient, efficient, and patient-centric platform for medical appointments and consultations.
+      </p>
+
+      <h3 style="color: #00f0ff; margin: 20px 0 10px;">Key Features</h3>
+      <ul style="text-align: left; padding-left: 20px; margin-bottom: 15px;">
+        <li>Online appointment booking with specialist doctors</li>
+        <li>Virtual consultations from anywhere</li>
+        <li>Real-time appointment management</li>
+        <li>Secure medical records storage</li>
+        <li>24/7 access to healthcare services</li>
+      </ul>
+
+      <h3 style="color: #00f0ff; margin: 20px 0 10px;">Why Choose Us?</h3>
+      <p style="line-height: 1.6;">
+        With DocNowLk, you get access to a network of verified healthcare professionals across Sri Lanka. Our platform is designed to save you time and provide you with the best medical care when you need it most.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    // Get the modal
+    var modal = document.getElementById("aboutModal");
+    // Get the button that opens the modal
+    var btn = document.getElementById("aboutBtn");
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal
+    btn.onclick = function() {
+      modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,371 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Doctor - DocNowLk</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        #bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .container {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 20px;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 600px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
+            animation: glow 2s infinite alternate;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #00f0ff;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        input[type="date"],
+        input[type="time"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            border-radius: 5px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus,
+        input[type="email"]:focus,
+        input[type="date"]:focus,
+        input[type="time"]:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #00f0ff;
+            box-shadow: 0 0 10px #00f0ff;
+            outline: none;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        /* Style for select dropdown */
+        select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300f0ff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 20px;
+            padding-right: 40px;
+        }
+
+        select option {
+            background-color: #000;
+            color: white;
+            padding: 10px;
+        }
+
+        /* Style for password visibility toggle */
+        .password-container {
+            position: relative;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #00f0ff;
+            cursor: pointer;
+            font-size: 18px;
+            padding: 5px;
+            transition: color 0.3s;
+        }
+
+        .password-toggle:hover {
+            color: #ffffff;
+        }
+
+        /* Time and Date input specific styling */
+        input[type="date"]::-webkit-calendar-picker-indicator,
+        input[type="time"]::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+            cursor: pointer;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .time-date-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            margin: 10px 10px 0;
+            padding: 12px 28px;
+            font-size: 16px;
+            border: none;
+            border-radius: 50px;
+            background-color: #00f0ff;
+            color: #000;
+            text-decoration: none;
+            transition: 0.3s;
+            box-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background-color: #ffffff;
+            color: #007BFF;
+            box-shadow: 0 0 20px #00f0ff, 0 0 40px #00f0ff;
+            transform: translateY(-2px);
+        }
+
+        .btn-submit {
+            background-color: #00f0ff;
+        }
+
+        .btn-cancel {
+            background-color: transparent;
+            border: 2px solid #00f0ff;
+            color: #00f0ff;
+        }
+
+        .btn-cancel:hover {
+            background-color: #ff3366;
+            border-color: #ff3366;
+            color: #ffffff;
+            box-shadow: 0 0 20px #ff3366, 0 0 40px #ff3366;
+        }
+
+        .form-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 30px;
+            color: #00f0ff;
+            text-decoration: none;
+            text-align: center;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: #ffffff;
+            text-shadow: 0 0 5px #00f0ff;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px #00f0ff, 0 0 10px #00f0ff;
+            }
+            to {
+                text-shadow: 0 0 15px #00f0ff, 0 0 30px #00f0ff;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .form-container {
+                padding: 20px;
+                margin: 0 10px;
+            }
+
+            .time-date-row {
+                grid-template-columns: 1fr;
+            }
+
+            .form-buttons {
+                flex-direction: column-reverse;
+            }
+
+            .btn {
+                width: 100%;
+                margin: 5px 0;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop playsinline id="bg-video">
+        <source src="doctor.mp4" type="video/mp4">
+    </video>
+
+    <div class="container">
+        <div class="form-container">
+            <h1>Add New Doctor</h1>
+
+            <form action="addnewdoc.php" method="post">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required placeholder="Enter doctor's username">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="password-container">
+                        <input type="password" id="password" name="password" required placeholder="Enter password">
+                        <button type="button" class="password-toggle" onclick="togglePassword()">👁</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Doctor Name</label>
+                    <input type="text" name="name" required placeholder="Enter doctor's full name">
+                </div>
+
+                <div class="form-group">
+                    <label>Specialization</label>
+                    <select name="specialization" required>
+                        <option value="" disabled selected>Select specialization</option>
+                            <option value="Family Medicine">Family Medicine</option>
+                            <option value="Internal Medicine">Internal Medicine</option>
+                            <option value="Pediatrics">Pediatrics</option>
+                            <option value="Geriatrics">Geriatrics</option>
+                            <option value="General Surgery">General Surgery</option>
+                            <option value="Orthopedic Surgery">Orthopedic Surgery</option>
+                            <option value="Neurosurgery">Neurosurgery</option>
+                            <option value="Cardiothoracic Surgery">Cardiothoracic Surgery</option>
+                            <option value="Plastic Surgery">Plastic Surgery</option>
+                            <option value="Cardiology">Cardiology</option>
+                            <option value="Gastroenterology">Gastroenterology</option>
+                            <option value="Pulmonology">Pulmonology</option>
+                            <option value="Nephrology">Nephrology</option>
+                            <option value="Endocrinology">Endocrinology</option>
+                            <option value="Rheumatology">Rheumatology</option>
+                            <option value="Hematology/Oncology">Hematology/Oncology</option>
+                            <option value="Obstetrics and Gynecology">Obstetrics and Gynecology</option>
+                            <option value="Psychiatry">Psychiatry</option>
+                            <option value="Dermatology">Dermatology</option>
+                            <option value="Ophthalmology">Ophthalmology</option>
+                            <option value="Otolaryngology (ENT)">Otolaryngology (ENT)</option>
+                            <option value="Radiology">Radiology</option>
+                            <option value="Anesthesiology">Anesthesiology</option>
+                            <option value="Emergency Medicine">Emergency Medicine</option>
+                            <option value="Pathology">Pathology</option>
+                            <option value="Physical Medicine & Rehabilitation">Physical Medicine & Rehabilitation</option>
+
+                    </select>
+                </div>
+
+                <div class="time-date-row">
+                    <div class="form-group">
+                        <label>Available Date</label>
+                        <input type="date" name="date" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Available Time</label>
+                        <input type="time" name="time" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="text" name="email" required placeholder="Enter contact email">
+                </div>
+                <div class="form-group">
+                    <label>telephone</label>
+                    <input type="text" name="telephone" required placeholder="Enter contact Telephone">
+                </div>
+
+                <div class="form-buttons">
+                    <button type="reset" class="btn btn-cancel">Cancel</button>
+                    <button type="submit" class="btn btn-submit">Add Doctor</button>
+                </div>
+            </form>
+
+            <a href="admindashboard.html" class="back-link">← Back to Dashboard</a>
+        </div>
+    </div>
+
+    <script>
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const toggleBtn = document.querySelector('.password-toggle');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleBtn.textContent = '👁‍🗨';
+            } else {
+                passwordInput.type = 'password';
+                toggleBtn.textContent = '👁';
+            }
+        }
+
+        // Set minimum date to today
+        document.addEventListener('DOMContentLoaded', function() {
+            const dateInput = document.querySelector('input[type="date"]');
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.min = today;
+        });
+    </script>
+</body>
+</html>

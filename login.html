@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Login - DocNow.Lk</title>
+    <!-- Include Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        #bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .content {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 20px;
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            width: 320px;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h2 {
+            color: #00f0ff;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 10px #00f0ff;
+            font-size: 1.8em;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            width: 100%;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #d8d3d3;
+            font-weight: 600;
+            text-align: left;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e2e2e2;
+            border-radius: 8px;
+            background: rgba(243, 245, 244, 0.9);
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            box-shadow: 0 0 10px #00f0ff;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 12px;
+            font-size: 16px;
+            border: none;
+            border-radius: 50px;
+            background-color: #00f0ff;
+            color: #000;
+            text-decoration: none;
+            transition: 0.3s;
+            box-shadow: 0 0 10px #00f0ff;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: #ffffff;
+            color: #007BFF;
+            box-shadow: 0 0 20px #00f0ff;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #00f0ff;
+            border: 2px solid #00f0ff;
+            box-shadow: none;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(0, 240, 255, 0.1);
+            color: #ffffff;
+            border: 2px solid #ffffff;
+            box-shadow: 0 0 15px #00f0ff;
+        }
+
+        .forgot-password {
+            text-align: center;
+            margin-top: 1rem;
+            color: #00f0ff;
+            text-decoration: none;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        .signup-link {
+            margin-top: 1.5rem;
+            color: white;
+        }
+
+        .signup-link a {
+            color: #00f0ff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop playsinline id="bg-video">
+        <source src="login.mp4" type="video/mp4" />
+    </video>
+
+    <div class="content">
+        <div class="login-container">
+            <h2>Log In To DocNowLk</h2>
+            <form action="login.php" method="post">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" name="pass" required>
+                </div>
+                <button type="submit" class="btn">Log In</button>
+            </form>
+            <a href="index.html" class="btn btn-secondary">
+              <i class="fas fa-arrow-left"></i> Back
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>

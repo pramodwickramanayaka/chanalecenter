@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DocNow.Lk - Sign Up</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    #bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    form {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff, 0 0 30px #00f0ff;
+      animation: glow 2s infinite alternate;
+    }
+
+    p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+      color: #d9faff;
+    }
+
+    table {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    td {
+      padding: 10px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="tel"],
+    input[type="date"],
+    select {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.9);
+      color: #333;
+      font-size: 16px;
+    }
+
+    input[type="submit"] {
+      display: inline-block;
+      margin: 10px;
+      padding: 12px 28px;
+      font-size: 16px;
+      border: none;
+      border-radius: 50px;
+      background-color: #00f0ff;
+      color: #000;
+      text-decoration: none;
+      transition: 0.3s;
+      box-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #ffffff;
+      color: #007BFF;
+      box-shadow: 0 0 20px #00f0ff, 0 0 40px #00f0ff;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 5px #00f0ff, 0 0 10px #00f0ff;
+      }
+      to {
+        text-shadow: 0 0 15px #00f0ff, 0 0 30px #00f0ff;
+      }
+    }
+  </style>
+</head>
+<body>
+  <video autoplay muted loop playsinline id="bg-video">
+    <source src="signup.mp4" type="video/mp4" />
+  </video>
+
+  <form action="signup.php" method="post">
+    <h1>Create Your Account</h1>
+    <p>Join DocNowLk to book appointments easily</p>
+    
+    <table>
+      <tr>
+        <td>
+          <label>First Name</label>
+          <input type="text" name="firstname" required>
+        </td>
+        <td>
+          <label>Last Name</label>
+          <input type="text" name="lastname" required>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Email</label>
+          <input type="text" name="email" required>
+        </td>
+        <td>
+          <label for="telephone">Telephone</label>
+          <input type="text" name="telephone" required>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Username</label>
+          <input type="text" name="username" required>
+        </td>
+        <td>
+          <label>Password</label>
+          <input type="password" name="password" required>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Date of Birth</label>
+          <input type="date"name="dob" required>
+        </td>
+        <td>
+          <label>City</label>
+          <select name="city" required>
+            <option value="">Select City</option>
+            <option value="colombo">Colombo</option>
+            <option value="kandy">Kandy</option>
+            <option value="galle">Galle</option>
+            <option value="jaffna">Jaffna</option>
+            <option value="negombo">Negombo</option>
+            <option value="matara">Matara</option>
+            <option value="kurunegala">Kurunegala</option>
+            <option value="gampaha">Gampaha</option>
+          </select>
+        </td>
+      </tr>
+    </table>
+    
+    <input type="submit" value="Sign Up">
+  </form>
+
+</body>
+</html>

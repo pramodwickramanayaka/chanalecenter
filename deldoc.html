@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Delete Doctor - DocNow.Lk</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    #bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .content {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff, 0 0 30px #00f0ff;
+      animation: glow 2s infinite alternate;
+    }
+
+    .form-container {
+      background-color: rgba(255, 255, 255, 0.116);
+      padding: 30px;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 500px;
+      text-align: left;
+      color: white;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: white;
+      font-size: 16px;
+    }
+
+    .btn {
+      display: inline-block;
+      margin: 10px;
+      padding: 12px 28px;
+      font-size: 16px;
+      border: none;
+      border-radius: 50px;
+      background-color: #00f0ff;
+      color: #000;
+      text-decoration: none;
+      transition: 0.3s;
+      box-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
+    }
+
+    .btn:hover {
+      background-color: #ffffff;
+      color: #007BFF;
+      box-shadow: 0 0 20px #00f0ff, 0 0 40px #00f0ff;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 5px #00f0ff, 0 0 10px #00f0ff;
+      }
+      to {
+        text-shadow: 0 0 15px #00f0ff, 0 0 30px #00f0ff;
+      }
+    }
+  </style>
+</head>
+<body>
+  <video autoplay muted loop playsinline id="bg-video">
+    <source src="doctor.mp4" type="video/mp4" />
+  </video>
+
+  <div class="content">
+    <h1>Delete Doctor</h1>
+
+    <div class="form-container">
+      <form action="delete-doctor.php" method="POST">
+        <div class="form-group">
+          <label>Doctor Username:</label>
+          <input type="text" name="username" required placeholder="Enter doctor's username" />
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn">Delete Doctor</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+
